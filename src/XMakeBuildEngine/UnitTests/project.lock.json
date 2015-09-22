@@ -912,20 +912,14 @@
           "lib/DNXCore50/System.IO.FileSystem.dll": {}
         }
       },
-      "System.IO.FileSystem.DriveInfo/4.0.0-beta-23302": {
+      "System.IO.FileSystem.DriveInfo/4.0.0-beta-23321": {
         "dependencies": {
+          "System.IO": "[4.0.0, )",
           "System.IO.FileSystem": "[4.0.0, )",
-          "System.Resources.ResourceManager": "[4.0.0, )",
-          "System.Runtime": "[4.0.20, )",
-          "System.Runtime.Extensions": "[4.0.10, )",
-          "System.Runtime.InteropServices": "[4.0.20, )",
-          "System.Threading.Tasks": "[4.0.10, )"
+          "System.Runtime": "[4.0.0, )"
         },
         "compile": {
           "ref/dotnet/System.IO.FileSystem.DriveInfo.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.IO.FileSystem.DriveInfo.dll": {}
         }
       },
       "System.IO.FileSystem.Primitives/4.0.0": {
@@ -1236,28 +1230,15 @@
           "lib/DNXCore50/System.Reflection.Extensions.dll": {}
         }
       },
-      "System.Reflection.Metadata/1.0.22": {
+      "System.Reflection.Metadata/1.1.0-alpha-00014": {
         "dependencies": {
-          "System.Collections": "[4.0.0, )",
-          "System.Collections.Immutable": "[1.1.37, )",
-          "System.Diagnostics.Debug": "[4.0.0, )",
-          "System.IO": "[4.0.0, )",
-          "System.Reflection": "[4.0.0, )",
-          "System.Reflection.Extensions": "[4.0.0, )",
-          "System.Reflection.Primitives": "[4.0.0, )",
-          "System.Resources.ResourceManager": "[4.0.0, )",
-          "System.Runtime": "[4.0.0, )",
-          "System.Runtime.Extensions": "[4.0.0, )",
-          "System.Runtime.InteropServices": "[4.0.0, )",
-          "System.Text.Encoding": "[4.0.0, )",
-          "System.Text.Encoding.Extensions": "[4.0.0, )",
-          "System.Threading": "[4.0.0, )"
+          "System.Collections.Immutable": "[1.1.36, )"
         },
         "compile": {
-          "lib/dotnet/System.Reflection.Metadata.dll": {}
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.Reflection.Metadata.dll": {}
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
         }
       },
       "System.Reflection.Primitives/4.0.0": {
@@ -2126,6 +2107,22 @@
           "lib/DNXCore50/Microsoft.Win32.Registry.dll": {}
         }
       },
+      "runtime.win7.System.IO.FileSystem.DriveInfo/4.0.0-beta-23321": {
+        "dependencies": {
+          "System.IO.FileSystem": "[4.0.0, )",
+          "System.Resources.ResourceManager": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.Extensions": "[4.0.10, )",
+          "System.Runtime.InteropServices": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )"
+        },
+        "compile": {
+          "ref/dotnet/_._": {}
+        },
+        "runtime": {
+          "runtimes/win7/lib/dotnet/System.IO.FileSystem.DriveInfo.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Runtime": "[4.0.0, )"
@@ -2522,20 +2519,14 @@
           "lib/DNXCore50/System.IO.FileSystem.dll": {}
         }
       },
-      "System.IO.FileSystem.DriveInfo/4.0.0-beta-23302": {
+      "System.IO.FileSystem.DriveInfo/4.0.0-beta-23321": {
         "dependencies": {
+          "System.IO": "[4.0.0, )",
           "System.IO.FileSystem": "[4.0.0, )",
-          "System.Resources.ResourceManager": "[4.0.0, )",
-          "System.Runtime": "[4.0.20, )",
-          "System.Runtime.Extensions": "[4.0.10, )",
-          "System.Runtime.InteropServices": "[4.0.20, )",
-          "System.Threading.Tasks": "[4.0.10, )"
+          "System.Runtime": "[4.0.0, )"
         },
         "compile": {
           "ref/dotnet/System.IO.FileSystem.DriveInfo.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.IO.FileSystem.DriveInfo.dll": {}
         }
       },
       "System.IO.FileSystem.Primitives/4.0.0": {
@@ -2863,28 +2854,15 @@
           "lib/DNXCore50/System.Reflection.Extensions.dll": {}
         }
       },
-      "System.Reflection.Metadata/1.0.22": {
+      "System.Reflection.Metadata/1.1.0-alpha-00014": {
         "dependencies": {
-          "System.Collections": "[4.0.0, )",
-          "System.Collections.Immutable": "[1.1.37, )",
-          "System.Diagnostics.Debug": "[4.0.0, )",
-          "System.IO": "[4.0.0, )",
-          "System.Reflection": "[4.0.0, )",
-          "System.Reflection.Extensions": "[4.0.0, )",
-          "System.Reflection.Primitives": "[4.0.0, )",
-          "System.Resources.ResourceManager": "[4.0.0, )",
-          "System.Runtime": "[4.0.0, )",
-          "System.Runtime.Extensions": "[4.0.0, )",
-          "System.Runtime.InteropServices": "[4.0.0, )",
-          "System.Text.Encoding": "[4.0.0, )",
-          "System.Text.Encoding.Extensions": "[4.0.0, )",
-          "System.Threading": "[4.0.0, )"
+          "System.Collections.Immutable": "[1.1.36, )"
         },
         "compile": {
-          "lib/dotnet/System.Reflection.Metadata.dll": {}
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.Reflection.Metadata.dll": {}
+          "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
         }
       },
       "System.Reflection.Primitives/4.0.0": {
@@ -3873,6 +3851,31 @@
         "ref/net46/Microsoft.Win32.Registry.dll"
       ]
     },
+    "runtime.win7.System.IO.FileSystem.DriveInfo/4.0.0-beta-23321": {
+      "sha512": "nHzE9QvJ8a+Myv6PEVfiK8xbvADdvoAtzwOkQeHfFrUEEhmlpuoI1qBz4LNlhbgUhAzigwrunPlek13Qi9OcSQ==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/win8/_._",
+        "lib/wp8/_._",
+        "lib/wpa81/_._",
+        "package/services/metadata/core-properties/8383c88b8180489f9e178fff3ff790c2.psmdcp",
+        "ref/dotnet/_._",
+        "runtime.win7.System.IO.FileSystem.DriveInfo.nuspec",
+        "runtimes/win7/lib/dotnet/de/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/es/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/fr/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/it/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/ja/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/ko/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/ru/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/System.IO.FileSystem.DriveInfo.dll",
+        "runtimes/win7/lib/dotnet/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/zh-hans/System.IO.FileSystem.DriveInfo.xml",
+        "runtimes/win7/lib/dotnet/zh-hant/System.IO.FileSystem.DriveInfo.xml"
+      ]
+    },
     "System.AppContext/4.0.0": {
       "sha512": "gUoYgAWDC3+xhKeU5KSLbYDhTdBYk9GssrMSCcWUADzOglW+s0AmwVhOUGt2tL5xUl7ZXoYTPdA88zCgKrlG0A==",
       "type": "Package",
@@ -4681,25 +4684,25 @@
         "System.IO.FileSystem.nuspec"
       ]
     },
-    "System.IO.FileSystem.DriveInfo/4.0.0-beta-23302": {
-      "sha512": "pbZYqNnchljr2Epj7yP/HJrthPSGlOabfpD3iqVCNFEzNSATcTiTTV9KH8gZcf+AjjhVZfCL8Dv58ve7KKjBCg==",
+    "System.IO.FileSystem.DriveInfo/4.0.0-beta-23321": {
+      "sha512": "jPtbrtqfN6DQRAx+azMZlPyd6tDVqZj8OuXShwHlOPYb+muqx8s2y9MOatBa0H3Pq6EmiqZ95mfhaaKgut23JQ==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
-        "lib/DNXCore50/System.IO.FileSystem.DriveInfo.dll",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net46/System.IO.FileSystem.DriveInfo.dll",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
-        "package/services/metadata/core-properties/c1d5c5ba76824b0cbbcc85f2eb7dd723.psmdcp",
+        "package/services/metadata/core-properties/8bf1bca438aa46abb737797c675c9041.psmdcp",
         "ref/dotnet/System.IO.FileSystem.DriveInfo.dll",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.IO.FileSystem.DriveInfo.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
+        "runtime.json",
         "System.IO.FileSystem.DriveInfo.nuspec"
       ]
     },
@@ -5327,17 +5330,16 @@
         "System.Reflection.Extensions.nuspec"
       ]
     },
-    "System.Reflection.Metadata/1.0.22": {
-      "sha512": "ltoL/teiEdy5W9fyYdtFr2xJ/4nHyksXLK9dkPWx3ubnj7BVfsSWxvWTg9EaJUXjhWvS/AeTtugZA1/IDQyaPQ==",
+    "System.Reflection.Metadata/1.1.0-alpha-00014": {
+      "sha512": "rVeIWjVoLQS0aNrGdzndZReskyfxu4EfO9BKqT5GJt0YfGtlsHB1aDPnjl4jIBDTr+WJC9YsnZg8S5sKT1X42g==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
-        "lib/dotnet/System.Reflection.Metadata.dll",
-        "lib/dotnet/System.Reflection.Metadata.xml",
         "lib/portable-net45+win8/System.Reflection.Metadata.dll",
+        "lib/portable-net45+win8/System.Reflection.Metadata.pdb",
         "lib/portable-net45+win8/System.Reflection.Metadata.xml",
-        "package/services/metadata/core-properties/2ad78f291fda48d1847edf84e50139e6.psmdcp",
+        "package/services/metadata/core-properties/a48ecf967b1540bba8edfe9af3a99ea5.psmdcp",
         "System.Reflection.Metadata.nuspec"
       ]
     },
@@ -6434,6 +6436,7 @@
       "System.Diagnostics.FileVersionInfo >= 4.0.0-beta-23123",
       "System.Diagnostics.Process >= 4.0.0-beta-23123",
       "System.Diagnostics.TraceSource >= 4.0.0-beta-23019",
+      "System.Reflection.Metadata >= 1.1.0-alpha-00014",
       "System.Runtime.InteropServices.RuntimeInformation >= 4.0.0-beta-23213",
       "System.Xml.ReaderWriter >= 4.0.10",
       "System.Xml.XmlDocument >= 4.0.0"

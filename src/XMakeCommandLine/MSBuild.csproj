@@ -72,7 +72,7 @@
       <Link>FileUtilities.cs</Link>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="..\Shared\FileUtilities.GetFolderPath.cs" >
+    <Compile Include="..\Shared\FileUtilities.GetFolderPath.cs">
       <Link>FileUtilities.GetFolderPath.cs</Link>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -207,6 +207,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(NetCoreBuild)' == 'true'">
+    <ProjectReference Include="..\MSBuild.NetCoreDependencies\MSBuild.NetCoreDependencies.csproj">
+      <Project>{1238886d-17f2-4324-b0b1-b079d1d846e1}</Project>
+      <Name>MSBuild.NetCoreDependencies</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XMakeBuildEngine\Microsoft.Build.csproj">
