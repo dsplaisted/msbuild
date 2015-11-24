@@ -13,6 +13,9 @@ if not defined MSBUILDCUSTOMPATH (
     set MSBUILDCUSTOMPATH=MSBuild.exe
 )
 
+echo ** Restoring build tools
+powershell -NoProfile -NoLogo -File %~dp0bootstrap\download-tools.ps1 %*
+
 echo ** MSBuild Path: %MSBUILDCUSTOMPATH%
 echo ** Building all sources
 
