@@ -53,9 +53,16 @@
 
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)'!='Core'">
     <BuildToolsRuntime>net46</BuildToolsRuntime>
     <ToolsDir>$([System.IO.Path]::Combine($(PackagesDir),"Microsoft.DotNet.BuildTools",$(BuildToolsRuntime)))$([System.IO.Path]::DirectorySeparatorChar)</ToolsDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
+    <BuildToolsRuntime>dnxcore50</BuildToolsRuntime>
+    <ToolsDir>$(MSBuildBinPath)$([System.IO.Path]::DirectorySeparatorChar)</ToolsDir>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <CompilerToolsDir>$([System.IO.Path]::Combine($(PackagesDir)Microsoft.Net.Compilers.$(CompilerToolsVersion),"tools"))$([System.IO.Path]::DirectorySeparatorChar)</CompilerToolsDir>
     <NuSpecReferenceGeneratorDir>$([System.IO.Path]::Combine($(PackagesDir)NuSpec.ReferenceGenerator.$(NuSpecReferenceGeneratorVersion),"build", "dotnet"))$([System.IO.Path]::DirectorySeparatorChar)</NuSpecReferenceGeneratorDir>
 
