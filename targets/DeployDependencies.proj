@@ -2,37 +2,6 @@
 <Project DefaultTargets="DeployDependencies" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\dir.props" />
 
-  <Target Name="CopyPackageContent">
-    <ItemGroup>
-      <!-- We want the list of files *after* restore, which happens
-           early in build, so this item can't be defined outside of a
-           target. -->
-      <NuspecFilesInPackagesDir Include="$(PackagesDir)\**\*.nupkg" />
-      <PackagesFoldersInPackagesDir Include="@(NuspecFilesInPackagesDir->'%(RootDir)%(Directory)')" />
-
-      <!-- For each package, get its content files. -->
-      <ContentFilesFromPackage Include="%(PackagesFoldersInPackagesDir.Identity)content\**\*.*" />
-    </ItemGroup>
-
-    <!-- Copy the dependencies to both the deployment and the test directories -->
-    <ItemGroup>
-      <DeploymentDestination Include="@(ContentFilesFromPackage->'$(DeploymentDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
-      <TestDeploymentDestination Include="@(ContentFilesFromPackage->'$(TestDeploymentDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
-    </ItemGroup>
-
-    <!-- Copy the package contents to both the deployment and test deployment directory -->
-
-    <Copy SourceFiles="@(ContentFilesFromPackage)"
-          DestinationFiles="@(DeploymentDestination)"
-          SkipUnchangedFiles="true"
-          />
-
-    <Copy SourceFiles="@(ContentFilesFromPackage)"
-          DestinationFiles="@(TestDeploymentDestination)"
-          SkipUnchangedFiles="true"
-          />
-  </Target>
-
   <UsingTask TaskName="PrereleaseResolveNuGetPackageAssets" AssemblyFile="$(ToolsDir)Microsoft.DotNet.Build.Tasks.dll"/>
 
   <PropertyGroup>
@@ -78,17 +47,17 @@
     <!-- Copy the dependencies to both the deployment and the test directories -->
 
     <Copy SourceFiles="@(ResolvedRuntimeFiles)"
-          DestinationFolder="$(DeploymentDir)"
+          DestinationFiles="@(ResolvedRuntimeFiles->'$(DeploymentDir)\%(DestinationSubDirectory)%(Filename)%(Extension)')"
           SkipUnchangedFiles="true"
           />
 
     <Copy SourceFiles="@(ResolvedRuntimeFiles)"
-          DestinationFolder="$(TestDeploymentDir)"
+          DestinationFiles="@(ResolvedRuntimeFiles->'$(TestDeploymentDir)\%(DestinationSubDirectory)%(Filename)%(Extension)')"
           SkipUnchangedFiles="true"
           />
   </Target>
 
   <Target Name="DeployDependencies"
-          DependsOnTargets="CopyPackageContent;DeployRuntime" />
+          DependsOnTargets="DeployRuntime" />
 
 </Project>
