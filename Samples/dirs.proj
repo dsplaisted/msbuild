@@ -4,10 +4,11 @@
   <ItemGroup Condition="'$(NetCoreBuild)' != 'true'">
     <Project Include="TaskUsageLogger\TaskUsageLogger.csproj" />
     <Project Condition="'$(MonoBuild)' != 'true'" Include="XmlFileLogger\XmlFileLogger.csproj" />
+    <Project Include="PortableTask\PortableTask.csproj" />
   </ItemGroup>
 
   <ItemGroup>    
-    <Project Include="PortableTask\PortableTask.csproj" />
+    
   </ItemGroup>
 
   <Import Project="..\dir.traversal.targets" />
