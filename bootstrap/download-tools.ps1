@@ -1,3 +1,22 @@
+$repoRoot = Split-Path -Parent $PSScriptRoot
+$dotnetCliRoot = $repoRoot + '\bin\obj\dotnetcli\'
+$dotnetCliBin = $dotnetCliRoot + 'bin\'
+$dotnet = $dotnetCliBin + 'dotnet'
+#$dotnetCmd = $dotnetCliRoot + 'bin\dotnet.exe'
+$bootstrapperProjectJson = $repoRoot + '\bin\obj\bootstrap\project.json'
+$packagesDir = $repoRoot + '\packages\'
+$buildToolsVersion = '1.0.25-prerelease-01027'
+
+$targetFramework = 'net46'
+if ($env:MSBUILD_RUNTIME_TYPE -eq "Core")
+{
+	$targetFramework = 'dnxcore50'
+}
+
+Write-Output "Restoring build tools for $targetFramework..."
+
+$BuildToolsDir = $packagesDir + 'Microsoft.DotNet.BuildTools\' + $targetFramework + '\'
+
 # Function that creates the .\bin\obj\dotnetcli\ directory.
 function CreateCliDirectory
 {
@@ -53,17 +72,6 @@ function BootstrapBuildTools
 	& $RestoreBuildTools -RepoRoot $repoRoot -DotNetCliBin $dotnetCliBin -TargetFramework $targetFramework
 	#& $dotNetCmd publish $bootstrapperProjectJson -f $targetFramework -r win7-x64 -o $BuildToolsDir
 }
-
-$repoRoot = Split-Path -Parent $PSScriptRoot
-$dotnetCliRoot = $repoRoot + '\bin\obj\dotnetcli\'
-$dotnetCliBin = $dotnetCliRoot + 'bin\'
-$dotnet = $dotnetCliBin + 'dotnet'
-#$dotnetCmd = $dotnetCliRoot + 'bin\dotnet.exe'
-$bootstrapperProjectJson = $repoRoot + '\bin\obj\bootstrap\project.json'
-$packagesDir = $repoRoot + '\packages\'
-$buildToolsVersion = '1.0.25-prerelease-01027'
-$targetFramework = 'net46'
-$BuildToolsDir = $packagesDir + 'Microsoft.DotNet.BuildTools\' + $targetFramework + '\'
 
 # Restore and Unzip dotnet cli if it doesn't exist
 If (-Not (Test-Path $dotnetCliRoot)) { CreateCliDirectory }
