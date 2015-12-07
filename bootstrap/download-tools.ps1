@@ -5,7 +5,7 @@ $dotnet = $dotnetCliBin + 'dotnet'
 #$dotnetCmd = $dotnetCliRoot + 'bin\dotnet.exe'
 $bootstrapperProjectJson = $repoRoot + '\bin\obj\bootstrap\project.json'
 $packagesDir = $repoRoot + '\packages\'
-$buildToolsVersion = '1.0.25-prerelease-01027'
+$buildToolsVersion = '1.0.25-prerelease-01028'
 
 $targetFramework = 'net46'
 if ($env:MSBUILD_RUNTIME_TYPE -eq "Core")
