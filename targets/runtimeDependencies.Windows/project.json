@@ -1,0 +1,23 @@
+﻿{
+  "runtimes": {
+    "win7-x86": { },
+    "win7-x64": { }
+  },
+  "dependencies": {
+  },
+  "frameworks": {
+    "net46": {
+      "dependencies": {
+      }
+    },
+    "dnxcore50": {
+      "dependencies": {
+        "System.Security.AccessControl": "4.0.0-rc3-23908",
+        "System.Security.Principal.Windows": "4.0.0-rc3-23908",
+        "Microsoft.Win32.Registry": "4.0.0-rc3-23908",
+        "Microsoft.NETCore.Platforms": "1.0.1-rc3-23908",
+      },
+      "imports": [ "portable-net451+win81", "netstandard1.3" ]
+    }
+  }
+}
