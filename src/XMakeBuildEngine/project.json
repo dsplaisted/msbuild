@@ -27,7 +27,7 @@
         "System.Diagnostics.TraceSource": "4.0.0-rc3-23908",
         "System.Diagnostics.Contracts": "4.0.1-rc3-23908",
         "System.Security.AccessControl": "4.0.0-beta-23712",
-        "System.Security.Cryptography.X509Certificates": "4.0.0-rc2-23715",
+        "System.Security.Cryptography.X509Certificates": "4.0.0-rc3-23904",
         "System.Security.Principal.Windows": "4.0.0-rc3-23908",
         "System.IO.FileSystem": "4.0.1-rc3-23908",
         "System.IO.Pipes": "4.0.0-rc3-23908",
