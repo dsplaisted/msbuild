@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Build.Shared;
 using Microsoft.Build.SharedUtilities;
 using Xunit;
+using System;
 
 namespace Microsoft.Build.UnitTests
 {
@@ -40,6 +41,11 @@ namespace Microsoft.Build.UnitTests
             Assert.True(successfulExit, $"{(useDesktopMSBuild ? "Desktop MSBuild" : "Non Desktop MSBuild")} failed to execute the portable task");
 
             var matches = Regex.Matches(executionOutput, @"Microsoft\.Build\.(\w+\.)+dll");
+
+            if (matches.Count == 0)
+            {
+                Console.WriteLine("Output didn't match: " + executionOutput);
+            }
 
             Assert.True(matches.Count > 1);
         }

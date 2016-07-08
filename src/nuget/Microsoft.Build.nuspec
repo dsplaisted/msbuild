@@ -22,6 +22,7 @@
         <dependency id="System.AppContext" version="4.1.0" />
         <dependency id="System.Collections" version="4.0.11" />
         <dependency id="System.Collections.Concurrent" version="4.0.12" />
+        <dependency id="System.Collections.Immutable" version="1.2.0" />
         <dependency id="System.Collections.NonGeneric" version="4.0.1" />
         <dependency id="System.Console" version="4.0.0" />
         <dependency id="System.Diagnostics.Contracts" version="4.0.1" />
