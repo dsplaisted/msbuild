@@ -1032,6 +1032,10 @@ namespace Microsoft.Build.Construction
             return TryOpen(path, ProjectCollection.GlobalProjectCollection);
         }
 
+        public static DateTime _timestamp = DateTime.Now;
+        public static string _logFile = @"C:\git\log\log " + _timestamp.ToString("dd-MM-yyyy-hh-mm-ss") + ".txt";
+        static Stopwatch _totalOpenTime;
+
         /// <summary>
         /// Returns the ProjectRootElement for the given path if it has been loaded, or null if it is not currently in memory.
         /// Uses the specified project collection.
@@ -1044,14 +1048,36 @@ namespace Microsoft.Build.Construction
         /// </remarks>
         public static ProjectRootElement TryOpen(string path, ProjectCollection projectCollection)
         {
-            ErrorUtilities.VerifyThrowArgumentLength(path, "path");
-            ErrorUtilities.VerifyThrowArgumentNull(projectCollection, "projectCollection");
+            if (_totalOpenTime == null)
+            {
+                _totalOpenTime = new Stopwatch();
+                File.WriteAllText(_logFile, "Start time\tOperation\tTotal time\tDuration\tPath" + Environment.NewLine);
+            }
 
-            path = FileUtilities.NormalizePath(path);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            _totalOpenTime.Start();
+            DateTime start = DateTime.Now;
+            try
+            {
 
-            ProjectRootElement projectRootElement = projectCollection.ProjectRootElementCache.TryGet(path);
+                ErrorUtilities.VerifyThrowArgumentLength(path, "path");
+                ErrorUtilities.VerifyThrowArgumentNull(projectCollection, "projectCollection");
 
-            return projectRootElement;
+                path = FileUtilities.NormalizePath(path);
+
+                ProjectRootElement projectRootElement = projectCollection.ProjectRootElementCache.TryGet(path);
+
+                return projectRootElement;
+            }
+            finally
+            {
+                stopwatch.Stop();
+                _totalOpenTime.Stop();
+
+                string line = $"{start.ToString("O")}\tEvaluate\t{_totalOpenTime.Elapsed}\t{stopwatch.Elapsed}\t{path}{Environment.NewLine}";
+                File.AppendAllText(_logFile, line);
+            }
         }
 
         /// <summary>

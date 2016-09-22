@@ -1724,6 +1724,17 @@ namespace Microsoft.Build.Execution
                     }
                 }
 
+                //var structuredLoggerDescription = new LoggerDescription(
+                //    "StructuredLogger",
+                //    null,
+                //    @"C:\Users\daplaist\AppData\Local\MSBuildStructuredLogViewer\app-1.0.58\StructuredLogger.dll",
+                //    @"c:\git\log\vs.buildlog",
+                //    LoggerVerbosity.Normal);
+                //var structuredLogger = structuredLoggerDescription.CreateLogger();
+                //structuredLogger.Parameters = structuredLoggerDescription.LoggerSwitchParameters;
+
+                //loggingService.RegisterLogger(structuredLogger);
+
                 if (loggingService.Loggers.Count == 0)
                 {
                     // We need to register SOME logger if we don't have any. This ensures the out of proc nodes will still send us message,

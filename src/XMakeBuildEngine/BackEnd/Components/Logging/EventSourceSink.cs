@@ -9,6 +9,9 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Shared;
 
 using InternalLoggerException = Microsoft.Build.Exceptions.InternalLoggerException;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Build.BackEnd.Logging
 {
@@ -369,6 +372,7 @@ namespace Microsoft.Build.BackEnd.Logging
             RaiseAnyEvent(sender, buildEvent);
         }
 
+
         /// <summary>
         /// Raises a "build started" event to all registered loggers.
         /// </summary>
@@ -421,6 +425,8 @@ namespace Microsoft.Build.BackEnd.Logging
         /// <exception cref="Exception">ExceptionHandling.IsCriticalException exceptions will not be wrapped</exception>
         private void RaiseBuildFinishedEvent(object sender, BuildFinishedEventArgs buildEvent)
         {
+            
+
             if (BuildFinished != null)
             {
                 try
@@ -453,6 +459,18 @@ namespace Microsoft.Build.BackEnd.Logging
             RaiseStatusEvent(sender, buildEvent);
         }
 
+        object _lockObject = new object();
+        TimeSpan _totalElapsed = TimeSpan.Zero;
+
+        class ProjectBuildInfo
+        {
+            public string Path { get; set; }
+            public DateTime BuildStartTime { get; set; }
+            public DateTime BuildEndTime { get; set; }
+        }
+
+        Dictionary<int, ProjectBuildInfo> _projectDict = new Dictionary<int, ProjectBuildInfo>();
+
         /// <summary>
         /// Raises a "project build started" event to all registered loggers.
         /// </summary>
@@ -463,6 +481,32 @@ namespace Microsoft.Build.BackEnd.Logging
         /// <exception cref="Exception">ExceptionHandling.IsCriticalException exceptions will not be wrapped</exception>
         private void RaiseProjectStartedEvent(object sender, ProjectStartedEventArgs buildEvent)
         {
+            lock (_lockObject)
+            {
+                if (buildEvent.ParentProjectBuildEventContext?.ProjectContextId <= 0)
+                {
+                    //  No parent project, this is a root build
+                    ProjectBuildInfo buildInfo = new ProjectBuildInfo();
+                    buildInfo.Path = buildEvent.ProjectFile;
+                    buildInfo.BuildStartTime = buildEvent.Timestamp;
+
+                    int projectId = buildEvent.BuildEventContext.ProjectContextId;
+
+                    if (_projectDict.ContainsKey(projectId))
+                    {
+                        //  Not expected: Overlapping build started
+                        string line = $"{buildEvent.Timestamp}\tOverlapping build started\t{_totalElapsed}\tUnknown\t{buildEvent.ProjectFile}{Environment.NewLine}";
+                        File.AppendAllText(Construction.ProjectRootElement._logFile, line);
+                    }
+                    else
+                    {
+                        _projectDict[projectId] = buildInfo;
+                    }
+
+                }
+            }
+
+
             if (ProjectStarted != null)
             {
                 try
@@ -505,6 +549,28 @@ namespace Microsoft.Build.BackEnd.Logging
         /// <exception cref="Exception">ExceptionHandling.IsCriticalException exceptions will not be wrapped</exception>
         private void RaiseProjectFinishedEvent(object sender, ProjectFinishedEventArgs buildEvent)
         {
+            lock(_lockObject)
+            {
+                string line;
+                ProjectBuildInfo buildInfo;
+                if (_projectDict.TryGetValue(buildEvent.BuildEventContext.ProjectContextId, out buildInfo))
+                {
+                    _projectDict.Remove(buildEvent.BuildEventContext.ProjectContextId);
+                    buildInfo.BuildEndTime = buildEvent.Timestamp;
+
+                    TimeSpan elapsed = buildInfo.BuildEndTime - buildInfo.BuildStartTime;
+                    _totalElapsed += elapsed;
+
+                    line = $"{buildInfo.BuildStartTime.ToString("O")}\tBuild\t{_totalElapsed}\t{elapsed}\t{buildInfo.Path}{Environment.NewLine}";
+                }
+                else
+                {
+                    //  Not expected: Unknown project finished
+                    line = $"{buildEvent.Timestamp}\tUnknown project build finished\t{_totalElapsed}\tUnknown\tUnknown{Environment.NewLine}";
+                }
+                File.AppendAllText(Construction.ProjectRootElement._logFile, line);
+            }
+
             if (ProjectFinished != null)
             {
                 try
