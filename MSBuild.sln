@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27031.1
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Build.Framework", "src\Framework\Microsoft.Build.Framework.csproj", "{571F09DB-A81A-4444-945C-6F7B530054CD}"
 EndProject
@@ -69,6 +69,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlFileLogger", "Samples\XmlFileLogger\XmlFileLogger.csproj", "{7D8BA0AA-B715-4646-A2F8-844DB2F15C81}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildTaskHost", "src\MSBuildTaskHost\MSBuildTaskHost.csproj", "{53733ECF-0D81-43DA-B602-2AE9417F614F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xunit.NetCore.Extensions", "src\Xunit.NetCore.Extensions\Xunit.NetCore.Extensions.csproj", "{1D889E96-979C-44F6-ADC3-E5532E83D15A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -877,6 +879,48 @@ Global
 		{53733ECF-0D81-43DA-B602-2AE9417F614F}.Release-NetCore|x64.Build.0 = Release-NetCore|x64
 		{53733ECF-0D81-43DA-B602-2AE9417F614F}.Release-NetCore|x86.ActiveCfg = Release-NetCore|x86
 		{53733ECF-0D81-43DA-B602-2AE9417F614F}.Release-NetCore|x86.Build.0 = Release-NetCore|x86
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug|x64.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug|x86.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-MONO|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-MONO|Any CPU.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-MONO|x64.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-MONO|x64.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-MONO|x86.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-MONO|x86.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-NetCore|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-NetCore|Any CPU.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-NetCore|x64.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-NetCore|x64.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-NetCore|x86.ActiveCfg = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Debug-NetCore|x86.Build.0 = Debug|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Port-Progress|Any CPU.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Port-Progress|Any CPU.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Port-Progress|x64.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Port-Progress|x64.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Port-Progress|x86.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Port-Progress|x86.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release|x64.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release|x64.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release|x86.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release|x86.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-MONO|Any CPU.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-MONO|Any CPU.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-MONO|x64.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-MONO|x64.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-MONO|x86.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-MONO|x86.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-NetCore|Any CPU.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-NetCore|Any CPU.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-NetCore|x64.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-NetCore|x64.Build.0 = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-NetCore|x86.ActiveCfg = Release|Any CPU
+		{1D889E96-979C-44F6-ADC3-E5532E83D15A}.Release-NetCore|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
