@@ -65,7 +65,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
             _host = null;
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/Microsoft/msbuild/issues/2926")]
         public void TestSimpleBuildRequest()
         {
             BuildRequestConfiguration configuration = CreateTestProject(1);

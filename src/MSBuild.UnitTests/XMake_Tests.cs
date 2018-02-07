@@ -1967,16 +1967,20 @@ namespace Microsoft.Build.UnitTests
                     .EnumerateDirectories(source)
                     .Where(d =>
                     {
-                        if (d.Equals(Path.GetTempPath(), StringComparison.OrdinalIgnoreCase))
+                        if (Path.GetFileName(d).Equals("TestTemp", StringComparison.InvariantCultureIgnoreCase))
                         {
                             return false;
                         }
-#if !RUNTIME_TYPE_NETCORE
-                        if (Path.GetFileName(d) == "SdkResolvers")
-                        {
-                            return false;
-                        }
-#endif
+//                        if (d.Equals(Path.GetTempPath(), StringComparison.OrdinalIgnoreCase))
+//                        {
+//                            return false;
+//                        }
+//#if !RUNTIME_TYPE_NETCORE
+//                        if (Path.GetFileName(d) == "SdkResolvers")
+//                        {
+//                            return false;
+//                        }
+//#endif
                         return true;
                     });
                     //.Where(d => Directory.EnumerateFiles(d).Any(f => f.EndsWith("resources.dll")));  // Copy satellite assemblies

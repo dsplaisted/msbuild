@@ -127,7 +127,8 @@ namespace Microsoft.Build.Internal
                     string taskhostexe = FileUtilities.ExecutingAssemblyPath;
                     string majorVersion = FileVersionInfo.GetVersionInfo(taskhostexe).FileMajorPart.ToString();
 
-                    s_fileVersionHash = GetHandshakeHashCode(complusInstallRoot ?? majorVersion);
+                    //s_fileVersionHash = GetHandshakeHashCode(complusInstallRoot ?? majorVersion);
+                    s_fileVersionHash = GetHandshakeHashCode(taskhostexe);
                     s_fileVersionChecked = true;
                 }
 

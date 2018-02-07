@@ -187,7 +187,7 @@ function Build {
 
   $solution = Join-Path $RepoRoot "MSBuild.sln"
 
-  $commonMSBuildArgs = "/m", "/nologo", "/clp:Summary", "/v:$verbosity", "/p:Configuration=$configuration", "/p:SolutionPath=$solution", "/p:CIBuild=$ci"
+  $commonMSBuildArgs = "/m:1", "/nologo", "/clp:Summary", "/v:$verbosity", "/p:Configuration=$configuration", "/p:SolutionPath=$solution", "/p:CIBuild=$ci"
   if ($ci)
   {
     # Only enable warnaserror on CI runs.  For local builds, we will generate a warning if we can't run EditBin because
