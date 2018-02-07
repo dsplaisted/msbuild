@@ -224,6 +224,7 @@
     <ProjectReference Include="..\Build\Microsoft.Build.csproj" />
 
     <ProjectReference Include="..\Tasks\Microsoft.Build.Tasks.csproj" />
+    <!--<ProjectReference Include="..\Utilities\Microsoft.Build.Utilities.csproj" />-->
   </ItemGroup>
 
   <!-- Include MSBuild.deps.json and MSBuild.runtimeconfig.json in ContentWithTargetPath so they will be copied to the output folder of projects

@@ -1960,11 +1960,26 @@ namespace Microsoft.Build.UnitTests
                 // Copy MSBuild.exe & dependent files (they will not be in the GAC so they must exist next to msbuild.exe)
                 var filesToCopy = Directory
                     .EnumerateFiles(source)
-                    .Where(f=> f.EndsWith(".dll") || f.EndsWith(".tasks") || f.EndsWith(".exe") || f.EndsWith(".exe.config") || f.EndsWith(".dll.config") || f.EndsWith(".runtimeconfig.json") || f.EndsWith(".deps.json"));
+                    //.Where(f=> f.EndsWith(".dll") || f.EndsWith(".tasks") || f.EndsWith(".exe") || f.EndsWith(".exe.config") || f.EndsWith(".dll.config") || f.EndsWith(".runtimeconfig.json") || f.EndsWith(".deps.json"))
+                    ;
 
                 var directoriesToCopy = Directory
                     .EnumerateDirectories(source)
-                    .Where(d => Directory.EnumerateFiles(d).Any(f => f.EndsWith("resources.dll")));  // Copy satellite assemblies
+                    .Where(d =>
+                    {
+                        if (d.Equals(Path.GetTempPath(), StringComparison.OrdinalIgnoreCase))
+                        {
+                            return false;
+                        }
+#if !RUNTIME_TYPE_NETCORE
+                        if (Path.GetFileName(d) == "SdkResolvers")
+                        {
+                            return false;
+                        }
+#endif
+                        return true;
+                    });
+                    //.Where(d => Directory.EnumerateFiles(d).Any(f => f.EndsWith("resources.dll")));  // Copy satellite assemblies
 
                 foreach (var file in filesToCopy)
                 {
@@ -1973,15 +1988,18 @@ namespace Microsoft.Build.UnitTests
 
                 foreach (var directory in directoriesToCopy)
                 {
-                    foreach (var sourceFile in Directory.EnumerateFiles(directory, "*"))
-                    {
-                        var destinationFile = sourceFile.Replace(source, dest);
+                    string dirName = Path.GetFileName(directory);
+                    string destSubDir = Path.Combine(dest, dirName);
+                    FileUtilities.CopyDirectory(directory, destSubDir);
+                    //foreach (var sourceFile in Directory.EnumerateFiles(directory, "*"))
+                    //{
+                    //    var destinationFile = sourceFile.Replace(source, dest);
 
-                        var directoryName = Path.GetDirectoryName(destinationFile);
-                        Directory.CreateDirectory(directoryName);
+                    //    var directoryName = Path.GetDirectoryName(destinationFile);
+                    //    Directory.CreateDirectory(directoryName);
 
-                        File.Copy(sourceFile, destinationFile);
-                    }
+                    //    File.Copy(sourceFile, destinationFile);
+                    //}
                 }
 
                 return dest;
